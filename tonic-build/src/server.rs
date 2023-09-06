@@ -206,7 +206,7 @@ fn generate_trait_methods<T: Service>(
                 quote! {
                     #method_doc
                     async fn #name(&self, request: tonic::Request<#req_message>)
-                        -> Result<tonic::Response<#res_message>, tonic::Status>;
+                        -> Result<tonic::Response<#res_message>, tonic::Status> { Err(tonic::Status::unimplemented("unimplemented")) }
                 }
             }
             (true, false) => {
